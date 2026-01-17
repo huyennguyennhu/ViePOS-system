@@ -1,0 +1,7 @@
+supplier_id,supplier_name,phone,email,address,status,note
+1,Tổng kho Cà phê & Trà Việt,0901222333,contact@cafeviet.vn,"Quận 12, TP.HCM",Active,"Chuyên hạt cafe, trà khô"
+2,Đại lý Sữa & Chế phẩm sữa,0918555666,sales@dairyagency.com,Đại lộ Bình Dương,Active,"Sữa đặc, sữa tươi, whipping"
+3,Thế giới Nguyên liệu Pha chế,0988777888,info@nguyenlieu.vn,"Quận Tân Bình, TP.HCM",Active,"Syrup, mứt, bột Matcha, Choco"
+4,Nông sản sạch Mekong,0933111222,farm@mekongfresh.vn,Tiền Giang,Active,"Hạt sen, trái cây tươi"
+5,Tiệm bánh ABC Bakery,02838123456,order@abcbakery.vn,Hệ thống cửa hàng,Active,"Croissant, Tiramisu, Cheesecake"
+6,Xưởng Bánh Mì Truyền Thống,0944999000,xuongbanhmi@gmail.com,"Quận Bình Thạnh, TP.HCM",Inactive,Tạm ngưng do thay đổi chính sách

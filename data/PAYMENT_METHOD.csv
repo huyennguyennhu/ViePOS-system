@@ -1,0 +1,5 @@
+payment_method_id,payment_method_name
+1,Tiền mặt
+2,Chuyển khoản QR
+3,Ví điện tử
+4,Thẻ ngân hàng

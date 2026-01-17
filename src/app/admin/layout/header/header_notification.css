@@ -1,0 +1,161 @@
+/* Notification Dropdown Container */
+.notification-container {
+    position: relative;
+}
+
+/* Notification Dropdown */
+.notification-dropdown {
+    position: absolute;
+    top: calc(100% + 15px);
+    right: -80px;
+    /* Adjust right position */
+    background-color: #ffffff;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+    width: 320px;
+    z-index: 1002;
+    overflow: hidden;
+    animation: dropdownFadeIn 0.2s ease;
+}
+
+.notification-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 16px;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.notification-header h3 {
+    margin: 0;
+    font-size: 16px;
+    font-weight: 600;
+    color: #333;
+}
+
+.mark-read {
+    font-size: 12px;
+    color: #3CB018;
+    /* Use theme green */
+    cursor: pointer;
+}
+
+.mark-read:hover {
+    text-decoration: underline;
+}
+
+.notification-list {
+    max-height: 350px;
+    overflow-y: auto;
+}
+
+.notification-item {
+    display: flex;
+    gap: 12px;
+    padding: 12px 16px;
+    border-bottom: 1px solid #f0f0f0;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.notification-item:hover {
+    background-color: #fafafa;
+}
+
+.notification-item.unread {
+    background-color: #f0f9eb;
+    /* Light green background for unread */
+}
+
+.notification-item.unread:hover {
+    background-color: #e6f4df;
+}
+
+
+/* Notification Icons */
+.notification-icon {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    background-color: #f5f5f5;
+}
+
+.notification-icon img {
+    width: 20px;
+    height: 20px;
+}
+
+.notification-icon.warning {
+    background-color: #fff8e1;
+    /* Light orange */
+}
+
+.notification-icon.warning img {
+    /* Need orange icon or filter */
+}
+
+.notification-icon.danger {
+    background-color: #ffebee;
+    /* Light red */
+}
+
+.notification-icon.success {
+    background-color: #e8f5e9;
+    /* Light green */
+}
+
+
+.notification-content {
+    flex: 1;
+}
+
+.notification-title {
+    font-size: 14px;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 4px;
+}
+
+.notification-message {
+    font-size: 13px;
+    color: #666;
+    line-height: 1.4;
+    margin-bottom: 4px;
+}
+
+.notification-time {
+    font-size: 11px;
+    color: #999;
+}
+
+/* Notification Footer */
+.notification-footer {
+    padding: 10px;
+    text-align: center;
+    border-top: 1px solid #f0f0f0;
+    background-color: #fafafa;
+}
+
+.notification-footer a {
+    font-size: 13px;
+    color: #3CB018;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.notification-footer a:hover {
+    text-decoration: underline;
+}
+
+/* Responsive adjust */
+@media (max-width: 480px) {
+    .notification-dropdown {
+        width: 280px;
+        right: -50px;
+    }
+}

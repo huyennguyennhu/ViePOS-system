@@ -1,0 +1,126 @@
+<header class="header">
+    <div class="header-container">
+        <!-- Left Section -->
+        <div class="header-left">
+            <!-- Logo -->
+            <div class="logo">
+                <a href="/admin/dashboard">
+                    <img src="/assets/favicon/logoname.png" alt="ViePOS Logo" class="logo-image">
+                </a>
+            </div>
+
+            <!-- Hamburger Menu -->
+            <button class="menu-toggle" [class.active]="isSidebarOpen" (click)="toggleSidebar()" title="Menu">
+                <img src="/assets/icon/list_dark.png" alt="Menu" class="menu-icon">
+            </button>
+
+
+        </div>
+
+        <!-- Right Section -->
+        <div class="header-right">
+            <!-- Search Bar -->
+            <div class="search-container">
+                <input type="text" class="search-input" placeholder="Tìm kiếm..." [(ngModel)]="searchQuery"
+                    (keyup.enter)="onSearch()" />
+                <button class="search-button" (click)="onSearch()">
+                    <img src="/assets/icon/search_dark.png" alt="Search" class="search-icon">
+                </button>
+            </div>
+            <!-- Help Icon -->
+            <button class="icon-button help-icon" title="Trợ giúp" (click)="navigateToHelp()">
+                <span class="icon-image"></span>
+                <span class="icon-label">Trợ giúp</span>
+            </button>
+
+            <!-- Feedback Icon -->
+            <button class="icon-button feedback-icon" title="Góp ý" (click)="navigateToFeedback()">
+                <span class="icon-image"></span>
+                <span class="icon-label">Góp ý</span>
+            </button>
+
+            <!-- Notification Icon -->
+            <div class="notification-container" [class.active]="isNotificationsOpen">
+                <button class="icon-button notification-button" title="Thông báo" (click)="toggleNotifications()">
+                    <span class="icon-image bell-icon"></span>
+                    <span class="notification-badge" *ngIf="unreadNotifications > 0">{{ unreadNotifications }}</span>
+                    <span class="icon-label">Thông báo</span>
+                </button>
+
+                <!-- Notification Dropdown -->
+                <div class="notification-dropdown" *ngIf="isNotificationsOpen">
+                    <div class="notification-header">
+                        <h3>Thông báo</h3>
+                        <span class="mark-read">Đánh dấu đã đọc</span>
+                    </div>
+                    <div class="notification-list">
+                        <div *ngFor="let item of notifications" class="notification-item" [class.unread]="!item.read">
+                            <div class="notification-content">
+                                <div class="notification-title">{{ item.title }}</div>
+                                <div class="notification-message">{{ item.message }}</div>
+                                <div class="notification-time">{{ item.time }}</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="notification-footer">
+                        <a href="/admin/notifications">Xem tất cả</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Divider -->
+            <div class="header-divider"></div>
+
+            <!-- User Dropdown -->
+            <div class="user-dropdown" [class.active]="isUserMenuOpen">
+                <button class="user-button" (click)="toggleUserMenu()">
+                    <div class="user-avatar">
+                        <img src="/assets/icon/person.png" alt="User Avatar" class="avatar-image">
+                    </div>
+                    <div class="user-info">
+                        <span class="user-name">{{ userName }}</span>
+                        <span class="user-role">{{ userRole }}</span>
+                    </div>
+                    <img src="/assets/icon/arrow_dark.png" class="dropdown-arrow" alt="arrow">
+                </button>
+
+                <!-- Dropdown Menu -->
+                <div class="dropdown-menu" *ngIf="isUserMenuOpen">
+                    <a href="/admin/account" class="dropdown-item account-link">
+                        <span class="dropdown-icon account-icon"></span>
+                        <span>Tài khoản</span>
+                    </a>
+
+                    <a href="/admin/services" class="dropdown-item services-link">
+                        <span class="dropdown-icon services-icon"></span>
+                        <span>Gói dịch vụ</span>
+                    </a>
+
+                    <div class="dropdown-divider"></div>
+
+                    <a href="/admin/terms" class="dropdown-item docs-link">
+                        <span class="dropdown-icon docs-icon"></span>
+                        <span>Điều khoản dịch vụ</span>
+                    </a>
+
+                    <a href="/admin/security" class="dropdown-item protect-link">
+                        <span class="dropdown-icon protect-icon"></span>
+                        <span>Chính sách bảo mật</span>
+                    </a>
+
+                    <a href="/admin/support" class="dropdown-item assistant-link">
+                        <span class="dropdown-icon assistant-icon"></span>
+                        <span>Hỗ trợ</span>
+                    </a>
+
+                    <div class="dropdown-divider"></div>
+
+                    <button class="dropdown-item logout" (click)="logout()">
+                        <span class="dropdown-icon logout-icon"></span>
+                        <span>Đăng xuất</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>

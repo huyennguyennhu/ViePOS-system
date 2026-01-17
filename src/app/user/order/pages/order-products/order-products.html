@@ -1,0 +1,72 @@
+<div class="pos-content">
+  <!-- Sidebar Categories -->
+  <aside class="pos-sidebar">
+    <div 
+      *ngFor="let cat of categories" 
+      class="category-item" 
+      [class.active]="selectedCategoryId === cat.category_id"
+      (click)="selectCategory(cat.category_id)"
+    >
+      {{cat.category_name}}
+    </div>
+  </aside>
+
+  <!-- Main Section -->
+  <main class="pos-main">
+    <!-- Product Grid (Left) -->
+    <section class="product-section">
+      <div class="section-title">
+        {{selectedCategoryName}}
+      </div>
+      <div class="product-grid">
+        <div 
+          *ngFor="let product of filteredProducts" 
+          class="product-card"
+          (click)="addToBill(product)"
+        >
+          <div class="product-img">
+            <img *ngIf="product.image_url; else emojiPlaceholder" [src]="product.image_url" [alt]="product.product_name">
+            <ng-template #emojiPlaceholder>🥧</ng-template>
+          </div>
+          <div class="product-info">
+            <div class="product-name">{{product.product_name}}</div>
+            <div class="product-price">{{product.price | number:'1.0-0'}}đ</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Bill Section (Right) -->
+    <section class="bill-section">
+      <div class="bill-header">
+        <h3>Hóa đơn</h3>
+        <span class="item-count">{{billItems.length}} món</span>
+      </div>
+      
+      <div class="bill-items">
+        <div *ngIf="billItems.length === 0" class="empty-bill">
+          Chưa có món nào được chọn
+        </div>
+        <div *ngFor="let item of billItems" class="bill-item">
+          <div class="item-details">
+            <div class="item-name">{{item.product_name}}</div>
+            <div class="item-price">{{item.price | number:'1.0-0'}}đ</div>
+          </div>
+          <div class="item-controls">
+            <button (click)="updateQuantity(item.product_id, -1)">-</button>
+            <span class="qty">{{item.quantity}}</span>
+            <button (click)="updateQuantity(item.product_id, 1)">+</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="bill-footer">
+        <div class="total-row">
+          <span>Tổng cộng</span>
+          <span class="total-price">{{totalAmount | number:'1.0-0'}}đ</span>
+        </div>
+        <button class="pay-btn" [disabled]="billItems.length === 0">THANH TOÁN</button>
+      </div>
+    </section>
+  </main>
+</div>

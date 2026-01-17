@@ -1,0 +1,26 @@
+.admin-layout {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    width: 100vw;
+    overflow: hidden;
+    font-family: 'Inter', sans-serif;
+}
+
+.admin-main-container {
+    display: flex;
+    flex: 1;
+    overflow: hidden;
+}
+
+.admin-content {
+    flex: 1;
+    background-color: #f8f9fa;
+    padding: 20px;
+    overflow-y: auto;
+}
+
+app-sidebar {
+    flex-shrink: 0;
+    z-index: 100;
+}

@@ -1,0 +1,41 @@
+<aside class="sidebar" [class.collapsed]="isCollapsed">
+    <div class="sidebar-content">
+        <!-- Main Menu -->
+        <nav class="sidebar-nav">
+            <div *ngFor="let item of menuItems" class="menu-item-container">
+                <div class="menu-item" [class.active]="item.active" (click)="toggleSubmenu(item)"
+                    [title]="isCollapsed ? item.title : ''">
+                    <div class="menu-item-left">
+                        <img [src]="'/assets/icon/' + item.icon" [alt]="item.title" class="menu-icon"
+                            [class.small-icon]="item.title === 'Tổng quan' || item.title === 'Nhân viên'">
+                        <span class="menu-title" *ngIf="!isCollapsed">{{ item.title }}</span>
+                    </div>
+                    <div class="menu-item-right" *ngIf="item.subItems && !isCollapsed">
+                        <img src="/assets/icon/arrow_white.png" alt="arrow" class="arrow-icon"
+                            [class.rotated]="item.expanded">
+                    </div>
+                </div>
+
+                <!-- Submenu -->
+                <div class="submenu" [class.expanded]="item.expanded && !isCollapsed" *ngIf="item.subItems">
+                    <a *ngFor="let sub of item.subItems" [routerLink]="sub.route" class="submenu-item"
+                        [class.active]="sub.active" routerLinkActive="active"
+                        (click)="$event.stopPropagation(); setSubActive(item, sub)">
+                        {{ sub.title }}
+                    </a>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Fixed Footer Section -->
+        <div class="sidebar-footer">
+            <div class="menu-item settings-item" [class.active]="settingsItem.active" [routerLink]="settingsItem.route"
+                [title]="isCollapsed ? settingsItem.title : ''" (click)="setActive(settingsItem)">
+                <div class="menu-item-left">
+                    <img [src]="'/assets/icon/' + settingsItem.icon" [alt]="settingsItem.title" class="menu-icon">
+                    <span class="menu-title" *ngIf="!isCollapsed">{{ settingsItem.title }}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</aside>

@@ -1,0 +1,24 @@
+<div class="pos-container">
+  <!-- Header -->
+  <header class="pos-header">
+    <div class="header-left">
+      <div class="logo-container">
+        <img src="assets/favicon/logoname.png" alt="ViePOS Logo" class="main-logo">
+      </div>
+      <nav class="nav-links">
+        <a routerLink="products" routerLinkActive="active" class="nav-item">Sản phẩm</a>
+        <a routerLink="tables" routerLinkActive="active" class="nav-item">Bàn</a>
+      </nav>
+    </div>
+    <div class="header-right">
+      <div class="account-info">
+        <span class="user-icon">👤</span>
+        <span class="user-name">{{currentUser.name}}</span>
+      </div>
+    </div>
+  </header>
+
+  <div class="pos-content-wrapper">
+    <router-outlet></router-outlet>
+  </div>
+</div>

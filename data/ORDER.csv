@@ -1,0 +1,8 @@
+order_id,order_time,order_status,total_amount,employee_id,payment_method_id,order_type
+1,2026-01-12 07:15:00,Hoàn tất đơn hàng,69000,1,1,Tại chỗ
+2,2026-01-12 08:30:00,Hoàn tất đơn hàng,129000,1,2,Mang đi
+3,2026-01-12 09:45:00,Hoàn tất đơn hàng,32000,1,1,Tại chỗ
+4,2026-01-12 11:20:00,Đợi phục vụ,184000,2,3,Tại chỗ
+5,2026-01-12 13:05:00,Đang pha chế,45000,2,2,Mang đi
+6,2026-01-12 14:15:00,Đã thanh toán,42000,2,2,Tại chỗ
+7,2026-01-12 14:30:00,Lên đơn hàng,25000,2,1,Mang đi

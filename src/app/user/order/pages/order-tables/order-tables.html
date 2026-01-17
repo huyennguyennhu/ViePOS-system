@@ -1,0 +1,32 @@
+<div class="pos-content">
+  <!-- Sidebar Floors -->
+  <aside class="pos-sidebar">
+    <div 
+      *ngFor="let floor of floors" 
+      class="category-item" 
+      [class.active]="selectedFloorId === floor.id"
+      (click)="selectFloor(floor.id)"
+    >
+      {{floor.name}}
+    </div>
+  </aside>
+
+  <!-- Main Section -->
+  <main class="pos-main">
+    <section class="tables-section">
+      <div class="section-title">Sơ đồ {{selectedFloorName}}</div>
+      
+      <div class="table-grid">
+        <div 
+          *ngFor="let table of filteredTables" 
+          class="table-card" 
+          [class.occupied]="table.status === 'Occupied'"
+        >
+          <div class="table-icon">🪑</div>
+          <div class="table-name">Bàn {{table.name}}</div>
+          <div class="table-status">{{table.status === 'Occupied' ? 'Đang có khách' : 'Bàn trống'}}</div>
+        </div>
+      </div>
+    </section>
+  </main>
+</div>

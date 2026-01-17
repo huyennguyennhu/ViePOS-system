@@ -1,0 +1,23 @@
+ingredient_id,ingredient_name,ingredient_type,unit,parent_ingredient_id,current_quantity,min_quantity
+1,Hạt cà phê Robusta,raw material,g,,10000,2000
+2,Sữa đặc,raw material,ml,,5000,1000
+3,Sữa tươi thanh trùng,raw material,ml,,4000,1000
+4,Trà đen (khô),raw material,g,,2000,500
+5,Cốt trà đen (ủ),semi-finished,ml,4,1500,300
+6,Trà lài (khô),raw material,g,,2000,500
+7,Cốt trà lài (ủ),semi-finished,ml,6,1500,300
+8,Syrup Đào,raw material,ml,,1000,200
+9,Đào miếng (đóng hộp),raw material,miếng,,100,20
+10,Syrup Vải,raw material,ml,,1000,200
+11,Quả vải (đóng hộp),raw material,trái,,80,20
+12,Mứt dâu,raw material,g,,1000,200
+13,Hạt sen tươi,raw material,g,,2000,500
+14,Hạt sen sơ chế,semi-finished,g,13,500,100
+15,Bột Matcha,raw material,g,,500,100
+16,Bánh Cookie Oreo,raw material,cái,,50,10
+17,Bột Chocolate,raw material,g,,1000,200
+18,Kem tươi (Whipping),raw material,ml,,1000,200
+19,Bánh Tiramisu,trading goods,cái,,15,5
+20,Bánh Croissant,trading goods,cái,,20,5
+21,Cheesecake Chanh Dây,trading goods,cái,,15,5
+22,Bánh Mì Que,trading goods,cái,,50,10

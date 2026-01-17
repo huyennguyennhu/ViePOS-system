@@ -1,0 +1,35 @@
+<div class="landing-container">
+  <div class="landing-card">
+    <div class="logo-section">
+      <div class="logo-box">ViePOS</div>
+      <h1>Hệ thống Quản lý Bán hàng</h1>
+      <p>Vui lòng chọn giao diện làm việc</p>
+    </div>
+
+    <div class="options-container">
+      <!-- User Option -->
+      <a routerLink="/user" class="option-card user-card">
+        <div class="icon">🛒</div>
+        <div class="info">
+          <h2>Bán hàng (POS)</h2>
+          <p>Dành cho nhân viên phục vụ và thu ngân</p>
+        </div>
+        <div class="arrow">→</div>
+      </a>
+
+      <!-- Admin Option -->
+      <a routerLink="/admin" class="option-card admin-card">
+        <div class="icon">⚙️</div>
+        <div class="info">
+          <h2>Quản trị (Admin)</h2>
+          <p>Dành cho quản lý và chủ cửa hàng</p>
+        </div>
+        <div class="arrow">→</div>
+      </a>
+    </div>
+
+    <footer class="landing-footer">
+      &copy; {{currentYear}} ViePOS - Giải pháp quản lý thông minh
+    </footer>
+  </div>
+</div>

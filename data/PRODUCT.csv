@@ -1,0 +1,17 @@
+product_id,product_name,category_id,price,is_active,image_url
+1,Cà phê Đen,1,25000,TRUE,https://i.pinimg.com/1200x/10/7d/19/107d1987d34010f6773094eec630f586.jpg
+2,Cà phê Sữa,1,29000,TRUE,https://i.pinimg.com/736x/cf/9a/1f/cf9a1f7606988334a3f0ec79b56693ae.jpg
+3,Bạc Xỉu,1,32000,TRUE,https://i.pinimg.com/736x/be/8d/41/be8d413f945e09c6236f726ec35b9a5f.jpg
+4,Latte,1,45000,TRUE,https://i.pinimg.com/736x/b0/29/43/b02943bdf573637c46ce9a674d091936.jpg
+5,Cappuccino,1,45000,TRUE,https://i.pinimg.com/1200x/81/92/7e/81927ee1cf8fcd7715530b0856cf553d.jpg
+6,Trà Đào Cam Sả,2,42000,TRUE,https://i.pinimg.com/736x/13/29/2f/13292f0a2609c317a663c29128414934.jpg
+7,Trà Vải Lài,2,42000,TRUE,https://i.pinimg.com/736x/0b/ce/2d/0bce2dc70b3b806fe193a1e45b054ff2.jpg
+8,Trà Dâu Đông Du,2,45000,TRUE,https://i.pinimg.com/1200x/bb/b9/0c/bbb90c05a94813d46dd521ed9bfb5abe.jpg
+9,Trà Sen Vàng,2,49000,TRUE,https://i.pinimg.com/736x/95/d7/7b/95d77b09e864be2ac2166c8e87d65dc2.jpg
+10,Matcha Đá Xay,3,55000,TRUE,https://i.pinimg.com/1200x/63/23/f9/6323f999dcfde756c62589d16e1df2cf.jpg
+11,Cookie Cream,3,55000,TRUE,https://i.pinimg.com/1200x/c9/91/24/c99124597430ed734a2f1db2246dc889.jpg
+12,Chocolate Đá Xay,3,59000,TRUE,https://i.pinimg.com/736x/71/59/18/7159184a8a17d407cc760413909b12d2.jpg
+13,Bánh Tiramisu,4,35000,TRUE,https://i.pinimg.com/1200x/24/1f/40/241f40cdb81ee38b3d1e87a593c5ace7.jpg
+14,Bánh Croissant,4,28000,TRUE,https://i.pinimg.com/1200x/f3/71/11/f371110ab0a492fc1dc98a0f63427109.jpg
+15,Cheesecake Chanh Dây,4,39000,TRUE,https://i.pinimg.com/736x/95/ae/1a/95ae1a655654d8c8a07c09ad6881ebf4.jpg
+16,Bánh Mì Que,4,15000,TRUE,https://i.pinimg.com/736x/d8/cb/1e/d8cb1e980ef1fdc7cc66e2bd45b514e9.jpg

@@ -1,0 +1,7 @@
+employee_id,full_name,role,username,password_hash,status
+1,Nguyễn Văn A,Quản lý,admin_01,$2b$12$Ex...,Active
+2,Trần Thị B,Thu ngân,cashier_01,$2b$12$Hy...,Active
+3,Lê Văn C,Thu ngân,cashier_02,$2b$12$Kj...,Active
+4,Phạm Minh D,Pha chế,barista_01,$2b$12$Mz...,Active
+5,Hoàng Thị E,Pha chế,barista_02,$2b$12$Qw...,Active
+6,Ngô Văn F,Thu ngân,cashier_03,$2b$12$Lx...,Inactive

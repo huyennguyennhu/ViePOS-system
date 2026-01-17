@@ -1,0 +1,13 @@
+stock_out_id,employee_id,export_date,reason,order_id
+1,1,2026-01-14 10:00:00,Hủy hàng do hết hạn sử dụng,
+2,1,2026-01-15 14:30:00,Trả hàng cho nhà cung cấp do lỗi bao bì,
+3,4,2026-01-16 09:00:00,Xuất kho phục vụ đào tạo nhân viên mới,
+4,1,2026-01-12 07:15:00,Xuất kho bán hàng (Đơn hàng #1),1
+5,1,2026-01-12 08:30:00,Xuất kho bán hàng (Đơn hàng #2),2
+6,1,2026-01-12 09:45:00,Xuất kho bán hàng (Đơn hàng #3),3
+7,2,2026-01-12 11:20:00,Xuất kho bán hàng (Đơn hàng #4),4
+8,2,2026-01-12 13:05:00,Xuất kho bán hàng (Đơn hàng #5),5
+9,2,2026-01-12 14:15:00,Xuất kho bán hàng (Đơn hàng #6),6
+10,2,2026-01-12 14:30:00,Xuất kho bán hàng (Đơn hàng #7),7
+11,5,2026-01-13 06:00:00,Xuất chế biến Cốt trà đen (Tự động),
+12,5,2026-01-13 06:30:00,Xuất chế biến Hạt sen (Tự động),

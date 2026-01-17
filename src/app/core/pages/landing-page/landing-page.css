@@ -1,0 +1,102 @@
+.landing-container {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(135deg, #256E05 0%, #349409 100%);
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.landing-card {
+  background: white;
+  padding: 40px;
+  border-radius: 20px;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+  width: 100%;
+  max-width: 600px;
+  text-align: center;
+}
+
+.logo-section {
+  margin-bottom: 40px;
+}
+
+.logo-box {
+  background: #256E05;
+  color: white;
+  display: inline-block;
+  padding: 10px 25px;
+  border-radius: 12px;
+  font-size: 1.8rem;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+h1 {
+  color: #333;
+  font-size: 1.8rem;
+  margin-bottom: 10px;
+}
+
+p {
+  color: #666;
+}
+
+.options-container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.option-card {
+  display: flex;
+  align-items: center;
+  padding: 20px;
+  border: 2px solid #F2F3ED;
+  border-radius: 15px;
+  text-decoration: none;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  text-align: left;
+}
+
+.option-card .icon {
+  font-size: 2.5rem;
+  margin-right: 20px;
+}
+
+.option-card .info h2 {
+  margin: 0;
+  color: #256E05;
+  font-size: 1.4rem;
+}
+
+.option-card .info p {
+  margin: 5px 0 0;
+  font-size: 0.9rem;
+}
+
+.option-card .arrow {
+  margin-left: auto;
+  font-size: 1.5rem;
+  color: #ccc;
+  transition: transform 0.3s;
+}
+
+/* Hover effects */
+.option-card:hover {
+  border-color: #3CB018;
+  background-color: #f9fff6;
+  transform: scale(1.02);
+  box-shadow: 0 5px 15px rgba(37, 110, 5, 0.1);
+}
+
+.option-card:hover .arrow {
+  color: #256E05;
+  transform: translateX(10px);
+}
+
+.landing-footer {
+  margin-top: 40px;
+  font-size: 0.8rem;
+  color: #999;
+}
