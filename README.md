@@ -1,288 +1,120 @@
-# 📁 Cấu trúc thư mục dự án ViePOS (Angular)
-
-## 🚀 Hướng dấn thiết lập nhanh (Dành cho thành viên mới)
-
-Nếu bạn vừa nhận project này và chưa có `node_modules` hay cơ sở dữ liệu, hãy làm theo các bước sau.
-
-> [!IMPORTANT]
-> **Yêu cầu:** Đã cài đặt **Docker Desktop** trên máy.
-
-### 1. Thiết lập Backend & Cơ sở dữ liệu
-Mở terminal tại thư mục gốc của dự án:
-```powershell
-cd backend
-npm install
-npm run import  # Lệnh này sẽ tự khởi động Docker & Import dữ liệu SQL Server
-```
-
-### 2. Thiết lập Frontend
-Mở một terminal khác (tại thư mục gốc):
-```powershell
-npm install
-```
-
----
-Khi đã có CSDL rồi thì chỉ cần chạy lệnh sau, còn nếu có chỉnh sửa dữ liệu trong các file csv cần chạy lại npm run import
-
-
-## 🛠️ Cách chạy ứng dụng
-
-### Bước 1: Chạy Backend (Bắt buộc để có dữ liệu)
-```powershell
-cd backend
-npm start
-```
-
-### Bước 2: Chạy Frontend (Chọn một trong các cách sau)
-
-*   **Phân hệ Bán hàng (User):** 
-`npm run start:user` (Mở tại `http://localhost:4200`)
-*   **Phân hệ Quản trị (Admin):** 
-`npm run start:admin` (Mở tại `http://localhost:4201`)
+# ☕ ViePOS - Hệ thống Quản lý Hoạt động Kinh doanh F&B
+### Giải pháp quản lý bán hàng và kho nguyên liệu tối ưu cho mô hình F&B vừa và nhỏ
 
 ---
 
-## 🏗️ Tổng quan cấp cao nhất
+## 📌 Giới thiệu
 
-```
-ViePOS/
-└── src/
-    └── app/
-        ├── admin/
-        ├── user/
-        ├── core/
-        ├── shared/
-        ├── app-routing.module.ts
-        ├── app.module.ts
-        └── app.component.*
-```
+ViePOS là hệ thống quản lý tích hợp được thiết kế chuyên biệt cho các quán cà phê và cơ sở F&B quy mô vừa và nhỏ. Dự án tập trung giải quyết các thách thức trong vận hành như: sai sót khi quản lý thủ công, thất thoát nguyên vật liệu và áp lực tuân thủ quy định về hóa đơn điện tử. Với triết lý "Vừa - Đủ - Tinh gọn", ViePOS cung cấp quy trình số hóa từ khâu Order đến quản lý kho đa tầng theo định mức (BOM).
 
-### 🔹 Giải thích
+> 📚 Đồ án môn học: Phân tích & Thiết kế Hệ thống Thông tin - 252BIM5022
 
-* **admin/**: Phân hệ quản trị (Admin)
-* **user/**: Phân hệ người dùng/POS bán hàng
-* **core/**: Logic & service dùng chung toàn hệ thống
-* **shared/**: Thành phần giao diện dùng lại
-* **app-routing.module.ts**: Điều hướng cấp ứng dụng (`/admin`, `/user`)
+## 👥 Nhóm thực hiện
+
+| STT | Tên thành viên |
+|---|---|
+| 1 | Ma Thị Thu Hà |
+| 2 | Nguyễn Như Huyền |
+| 3 | Vũ Minh Nhật |
+| 4 | Nguyễn Linh Yến Nhi |
+| 5 | Trần Quang Vũ |
 
 ---
 
-## 🛠️ Phân hệ Admin (Quản trị hệ thống)
+## 🎯 Mục tiêu
 
+- **Số hóa quy trình bán hàng (POS):** Tiếp nhận Order, thanh toán và chuyển lệnh pha chế thời gian thực.
+- **Quản lý kho chuyên sâu:** Theo dõi vòng đời nguyên vật liệu từ kho thô đến bán thành phẩm.
+- **Tối ưu định mức (BOM):** Tự động trừ kho dựa trên công thức chế biến (Hybrid BOM) để kiểm soát hao hụt.
+- **Hỗ trợ quản trị:** Cung cấp báo cáo doanh thu, tồn kho và cảnh báo ngưỡng an toàn/hạn sử dụng.
+
+---
+
+## 📁 Cấu trúc dự án
 ```
-admin/
-├── admin.module.ts
-├── admin-routing.module.ts
+ViePOS-system/
 │
-├── layout/
-│   ├── admin-layout/
-│   ├── header/
-│   └── sidebar/
+├── data/                        # Dữ liệu (tải từ Kaggle)
+│   ├── train.csv
+│   ├── test.csv
+│   ├── features.csv
+│   └── stores.csv
 │
-├── dashboard/
+├── code/
+│   └── walmart_forecasting.ipynb   # Notebook chính (đầy đủ pipeline)
+│
 ├── report/
-├── invoice/
-├── product/
-├── staff/
-├── category/
-├── inventory/
-└── settings/
+│   └── walmart_forecasting_report.pdf   # Báo cáo đồ án
+│
+└── README.md
 ```
-
-### 📌 Chức năng tổng quát
-
-> Quản lý toàn bộ hoạt động của quán: doanh thu, sản phẩm, nhân viên, kho, cấu hình
 
 ---
 
-### 🧱 layout/ – Khung giao diện Admin
-
+## 🔄 Pipeline
 ```
-layout/
-├── admin-layout/
-├── header/
-└── sidebar/
+Thu thập dữ liệu (Kaggle)
+        ↓
+Khám phá dữ liệu (EDA)
+        ↓
+Tiền xử lý & Aggregate theo tuần
+        ↓
+Phân tích Time Series (STL, ACF/PACF, ADF/KPSS)
+        ↓
+Feature Engineering (25 đặc trưng)
+        ↓
+Huấn luyện & So sánh mô hình
+  ├── Holt-Winters
+  ├── ARIMA (Grid Search AIC)
+  └── XGBoost
+        ↓
+Tinh chỉnh Hyperparameter
+        ↓
+Retrain + Recursive Forecast (39 tuần)
+        ↓
+Phân loại nhu cầu & Kế hoạch tồn kho
 ```
-
-* **admin-layout/**: Component bọc toàn bộ giao diện admin
-* **header/**: Thanh tiêu đề (tên hệ thống, tài khoản, logout)
-* **sidebar/**: Menu điều hướng các trang admin
-
-👉 Layout được dùng chung cho tất cả trang admin
 
 ---
 
-### 📊 dashboard/ – Trang Tổng quan
+## 📊 Dữ liệu
 
-```
-dashboard/
-├── dashboard.module.ts
-├── dashboard-routing.module.ts
-└── pages/
-    └── dashboard/
-```
+**Nguồn:** [Walmart Sales Forecast – Kaggle](https://www.kaggle.com/datasets/aslanahmedov/walmart-sales-forecast)
 
-* Hiển thị số liệu tổng quan: doanh thu hôm nay, số đơn, tồn kho thấp…
-* Là **trang mặc định** khi vào `/admin`
+| File | Mô tả | Kích thước |
+|---|---|---|
+| `train.csv` | Doanh thu lịch sử (2/2010 – 10/2012) | 421,570 dòng |
+| `test.csv` | 39 tuần cần dự báo | 115,064 dòng |
+| `features.csv` | Biến ngoại sinh (nhiệt độ, CPI, MarkDown...) | 8,190 dòng |
+| `stores.csv` | Thông tin 45 cửa hàng | 45 dòng |
 
 ---
 
-### 📈 report/ – Trang Báo cáo
+## 🧪 Kết quả mô hình
 
-```
-report/
-├── report.module.ts
-├── report-routing.module.ts
-└── pages/
-    └── report-list/
-```
+### So sánh sau tinh chỉnh Hyperparameter
 
-* Báo cáo doanh thu theo ngày/tháng
-* Thống kê sản phẩm bán chạy
+| Department | Holt-Winters MAPE | ARIMA MAPE | XGBoost MAPE |
+|---|---|---|---|
+| Dept 92 | 2.71% | 4.85% | **2.89%** |
+| Dept 95 | 2.71% | 4.06% | **1.71%** |
+| Dept 38 | 5.63% | 6.50% | **3.61%** |
 
----
+> ✅ **XGBoost được chọn** làm mô hình triển khai cho cả 3 Department dựa trên chỉ số RMSE.
 
-### 🧾 invoice/ – Trang Hóa đơn
+### Tham số XGBoost tốt nhất
 
-```
-invoice/
-├── invoice.module.ts
-├── invoice-routing.module.ts
-└── pages/
-    ├── invoice-list/
-    └── invoice-detail/
-```
-
-* Xem danh sách hóa đơn
-* Xem chi tiết từng hóa đơn
+| Department | n_estimators | learning_rate | max_depth | RMSE |
+|---|---|---|---|---|
+| Dept 92 | 500 | 0.05 | 5 | 122,190 |
+| Dept 95 | 500 | 0.05 | 5 | 90,132 |
+| Dept 38 | 700 | 0.02 | 6 | 120,531 |
 
 ---
 
-### 🛍️ product/ – Trang Sản phẩm
+## 💡 Kết quả chính
 
-```
-product/
-├── product.module.ts
-├── product-routing.module.ts
-└── pages/
-    ├── product-list/
-    └── product-form/
-```
-
-* Quản lý sản phẩm (thêm/sửa/xóa)
-* Gán giá, hình ảnh, danh mục
-
----
-
-### 👥 staff/ – Trang Nhân viên
-
-```
-staff/
-├── staff.module.ts
-├── staff-routing.module.ts
-└── pages/
-    ├── staff-list/
-    └── staff-form/
-```
-
-* Quản lý nhân viên
-* Phân quyền (admin, thu ngân…)
-
----
-
-### 🗂️ category/ – Trang Mặt hàng / Danh mục
-
-```
-category/
-├── category.module.ts
-├── category-routing.module.ts
-└── pages/
-    ├── category-list/
-    └── category-form/
-```
-
-* Quản lý danh mục sản phẩm (Cafe, Trà, Topping…)
-
----
-
-### 📦 inventory/ – Trang Kho hàng
-
-```
-inventory/
-├── inventory.module.ts
-├── inventory-routing.module.ts
-└── pages/
-    ├── inventory-list/
-    └── stock-adjust/
-```
-
-* Theo dõi tồn kho
-* Điều chỉnh nhập/xuất kho
-
----
-
-### ⚙️ settings/ – Trang Thiết lập
-
-```
-settings/
-├── settings.module.ts
-├── settings-routing.module.ts
-└── pages/
-    └── settings/
-```
-
-* Cấu hình hệ thống
-* Thông tin cửa hàng, thuế, đơn vị tiền
-
----
-
-## 👤 Phân hệ User (POS bán hàng)
-
-```
-user/
-├── user.module.ts
-├── user-routing.module.ts
-└── order/
-    ├── order.module.ts
-    ├── order-routing.module.ts
-    └── pages/
-        └── order-page/
-```
-
-### 🔹 Chức năng
-
-* Giao diện bán hàng tại quầy
-* Tạo đơn, chọn sản phẩm, thanh toán
-
----
-
-## 🔧 core/ – Dùng chung toàn hệ thống
-
-```
-core/
-└── services/
-    ├── auth.service.ts
-    ├── order.service.ts
-    ├── product.service.ts
-    └── report.service.ts
-```
-
-* Xử lý logic nghiệp vụ
-* Giao tiếp backend / API
-* Admin và User **cùng dùng chung**
-
----
-
-## ♻️ shared/ – Thành phần dùng lại
-
-```
-shared/
-├── components/
-├── pipes/
-└── directives/
-```
-
-* Button, modal, table dùng chung
-* Pipe format tiền, ngày tháng
-
----
+- **Dept 92:** Nhu cầu cao tập trung tháng 11–2, đỉnh tuần 21/12 (+30% vs baseline)
+- **Dept 95:** Nhu cầu cao vào mùa hè (tháng 6–7), thấp vào cuối năm
+- **Dept 38:** Nhu cầu cao tháng 1–4, chỉ 2 tuần Low Demand (23/11 và 28/12)
+- Phát hiện cơ hội **tái phân bổ vốn tồn kho nội bộ** từ Dept 92 sang Dept 95 từ tháng 3–5
