@@ -34,17 +34,8 @@ ViePOS là hệ thống quản lý tích hợp được thiết kế chuyên bi�
 ```
 ViePOS-system/
 │
-├── data/                        # Dữ liệu (tải từ Kaggle)
-│   ├── train.csv
-│   ├── test.csv
-│   ├── features.csv
-│   └── stores.csv
-│
-├── code/
-│   └── walmart_forecasting.ipynb   # Notebook chính (đầy đủ pipeline)
-│
 ├── report/
-│   └── walmart_forecasting_report.pdf   # Báo cáo đồ án
+│   └── ViePOS_system.pdf   # Báo cáo đồ án
 │
 └── README.md
 ```
@@ -53,68 +44,45 @@ ViePOS-system/
 
 ## 🔄 Pipeline
 ```
-Thu thập dữ liệu (Kaggle)
+Khảo sát hiện trạng (Phỏng vấn & Quan sát) [cite: 122, 134]
         ↓
-Khám phá dữ liệu (EDA)
+Xác định yêu cầu (Chức năng & Phi chức năng) [cite: 172]
         ↓
-Tiền xử lý & Aggregate theo tuần
+Phân tích luồng dữ liệu (DFD Context, Level 0) [cite: 246]
         ↓
-Phân tích Time Series (STL, ACF/PACF, ADF/KPSS)
+Mô hình hóa nghiệp vụ (BPMN, Use Case) [cite: 255]
         ↓
-Feature Engineering (25 đặc trưng)
+Thiết kế Cơ sở dữ liệu (ERD, Từ điển dữ liệu) [cite: 248]
         ↓
-Huấn luyện & So sánh mô hình
-  ├── Holt-Winters
-  ├── ARIMA (Grid Search AIC)
-  └── XGBoost
+Thiết kế hướng đối tượng (Class Diagram, Sequence Diagram) [cite: 251]
         ↓
-Tinh chỉnh Hyperparameter
+Thiết kế Giao diện (UI/UX Mockup) [cite: 352]
         ↓
-Retrain + Recursive Forecast (39 tuần)
-        ↓
-Phân loại nhu cầu & Kế hoạch tồn kho
+Đánh giá & Tổng kết [cite: 169]
 ```
 
 ---
 
-## 📊 Dữ liệu
+## 🛠 Công nghệ & Công cụ sử dụng
 
-**Nguồn:** [Walmart Sales Forecast – Kaggle](https://www.kaggle.com/datasets/aslanahmedov/walmart-sales-forecast)
-
-| File | Mô tả | Kích thước |
-|---|---|---|
-| `train.csv` | Doanh thu lịch sử (2/2010 – 10/2012) | 421,570 dòng |
-| `test.csv` | 39 tuần cần dự báo | 115,064 dòng |
-| `features.csv` | Biến ngoại sinh (nhiệt độ, CPI, MarkDown...) | 8,190 dòng |
-| `stores.csv` | Thông tin 45 cửa hàng | 45 dòng |
+- Mô hình hóa: draw.io
+- Thiết kế UI/UX: Figma
+- Quản lý dự án: Google Sheet, Zalo, Google Meet, Google Docs
+- Kiến trúc hệ thống: Web Application (Mô hình MVC)
 
 ---
 
-## 🧪 Kết quả mô hình
+## 🧪 Kết quả đạt được
 
-### So sánh sau tinh chỉnh Hyperparameter
-
-| Department | Holt-Winters MAPE | ARIMA MAPE | XGBoost MAPE |
-|---|---|---|---|
-| Dept 92 | 2.71% | 4.85% | **2.89%** |
-| Dept 95 | 2.71% | 4.06% | **1.71%** |
-| Dept 38 | 5.63% | 6.50% | **3.61%** |
-
-> ✅ **XGBoost được chọn** làm mô hình triển khai cho cả 3 Department dựa trên chỉ số RMSE.
-
-### Tham số XGBoost tốt nhất
-
-| Department | n_estimators | learning_rate | max_depth | RMSE |
-|---|---|---|---|---|
-| Dept 92 | 500 | 0.05 | 5 | 122,190 |
-| Dept 95 | 500 | 0.05 | 5 | 90,132 |
-| Dept 38 | 700 | 0.02 | 6 | 120,531 |
+- **Hệ thống POS linh hoạt:** Cho phép tùy chỉnh topping, ghi chú và in hóa đơn nhanh chóng.
+- **Quản lý kho kép:** Xử lý tốt bài toán chuyển đổi từ nguyên liệu thô sang bán thành phẩm (sơ chế).
+- **Tính minh bạch cao:** Lưu vết toàn bộ lịch sử xuất - nhập - tồn thông qua phiếu kiểm kê và giải trình chênh lệch.
+- **Khả năng mở rộng:** Định hướng tích hợp thanh toán số (MoMo, VNPay) và kết nối các sàn Food Delivery (GrabFood, ShopeeFood).
 
 ---
 
-## 💡 Kết quả chính
+## 💡 Hướng phát triển tương lai
 
-- **Dept 92:** Nhu cầu cao tập trung tháng 11–2, đỉnh tuần 21/12 (+30% vs baseline)
-- **Dept 95:** Nhu cầu cao vào mùa hè (tháng 6–7), thấp vào cuối năm
-- **Dept 38:** Nhu cầu cao tháng 1–4, chỉ 2 tuần Low Demand (23/11 và 28/12)
-- Phát hiện cơ hội **tái phân bổ vốn tồn kho nội bộ** từ Dept 92 sang Dept 95 từ tháng 3–5
+- **Ứng dụng AI:** Dự đoán nhu cầu nguyên vật liệu để hạn chế lãng phí.
+- **Quản trị đa chi nhánh:** Phát triển phân hệ kho tổng và điều phối hàng hóa giữa các điểm bán.
+- **Omnichannel:** Đồng bộ doanh thu từ các nền tảng đặt món trực tuyến qua API.
